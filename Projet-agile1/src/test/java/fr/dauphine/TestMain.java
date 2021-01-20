@@ -3,6 +3,7 @@ package fr.dauphine;
 
 import fr.dauphine.adapter.VirusToAvenger;
 import fr.dauphine.avengers.Avenger;
+import fr.dauphine.avengers.FusionAvenger;
 import fr.dauphine.avengers.SuperMechant;
 import fr.dauphine.avengers.SuperPouvoir;
 import fr.dauphine.virus.Disease;
@@ -119,5 +120,32 @@ public class TestMain {
     }
 
     @Test
+    public void testFusionGetPouvoir(){
+        Avenger avenger1 = new Avenger("gerald",50);
+        Avenger avenger2 = new Avenger("sawsaw",50);
+        SuperPouvoir superPouvoir1 = new SuperPouvoir("Magic");
+        SuperPouvoir superPouvoir2 = new SuperPouvoir("Sword");
+        SuperPouvoir superPouvoir3 = new SuperPouvoir("Lying");
+        avenger1.addSuperPower(superPouvoir1);
+        avenger1.addSuperPower(superPouvoir2);
+        avenger2.addSuperPower(superPouvoir3);
 
+        ArrayList<SuperPouvoir> superPouvoirs = new ArrayList<SuperPouvoir>();
+        superPouvoirs.add(superPouvoir1);
+        superPouvoirs.add(superPouvoir2);
+        superPouvoirs.add(superPouvoir3);
+        FusionAvenger fusionAvenger = new FusionAvenger("la fusion",avenger1,avenger2);
+        for(int i = 0;i< superPouvoirs.size();i++) {
+            assertEquals(fusionAvenger.getAllSuperPowerFusion().get(i), superPouvoirs.get(i));
+        }
+    }
+
+    @Test
+    public void testFusionGetPower(){
+        Avenger avenger1 = new Avenger("gerald",50);
+        Avenger avenger2 = new Avenger("sawsaw",35);
+        FusionAvenger fusionAvenger = new FusionAvenger("la fusion",avenger1,avenger2);
+        assertEquals(avenger1.getPower()+avenger2.getPower(), fusionAvenger.getPower());
+
+    }
 }
