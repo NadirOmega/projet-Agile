@@ -101,7 +101,11 @@ public class Virus {
 	}
 
 	public ArrayList<Disease> getDiseases() {
-		return (ArrayList<Disease>) diseases.clone();
+		return this.diseases;
+	}
+	public ArrayList<Disease> getDiseasesClone() {
+		ArrayList<Disease> clone = (ArrayList<Disease>) diseases.clone();
+		return clone;
 	}
 	public void setMaladies(ArrayList<Disease> maladies) {
 		this.diseases = maladies;

@@ -7,52 +7,52 @@ import org.junit.Test;
 
 import fr.dauphine.exception.VirusIsAlreadySet;
 
-class VirusTestCases {
+public class VirusTestCases {
 	/**
 	 * Ici nous allons effectuer les tests de la classe virus
 	 */
 	@Test 
-	void testNameGetters() {
+	public void testNameGetters() {
 		Virus virus = new Virus();
 		assertEquals("Unknown_virus",virus.getName());
 	}
 	@Test
-	void testGentillesseGetter() {
+	public void testGentillesseGetter() {
 		Virus virus = new Virus();
 		assertEquals(100,virus.getKidness());
 	}
 	@Test
-	void testConstructorVirus() {
+	public void testConstructorVirus() {
 		Virus virus = new Virus(0,"Sars-Agil-19");
 		assert((virus.getKidness()==0) 
 				&& (virus.getName().equals("Sars-Agil-19")));
 	}
 
 	@Test
-	void testConstructorMaladie() {
+	public void testConstructorMaladie() {
 		Disease disease = new Disease("Agil-19");
 		assert(disease.getName().equals("Agil-19"));
 	}
 	@Test
-	void testSetterNameVirus() {
+	public void testSetterNameVirus() {
 		Virus virus = new Virus(0,"Sars-Agil-19");
 		virus.setName("Sars-Agil-20");
 		assertEquals("Sars-Agil-20",virus.getName());
 	}
 	@Test
-	void testSetterGentillesseVirus() {
+	public void testSetterGentillesseVirus() {
 		Virus virus = new Virus(0,"Sars-Agil-19");
 		virus.setKindness(1);
 		assertEquals(1,virus.getKidness());
 	}
 	@Test
-	void testSetterNameMaladie() {
+	public void testSetterNameMaladie() {
 		Disease disease = new Disease("Agil-19");
 		disease.setName("Agil-20");
 		assertEquals("Agil-20",disease.getName());
 	}
 	@Test
-	void testSetterVirusMaladie() {
+	public void testSetterVirusMaladie() {
 		Disease disease = new Disease("Agil-19");
 		Virus virus = new Virus(0,"Sars-Agil-19");
 		disease.setVirus(virus);
@@ -62,7 +62,7 @@ class VirusTestCases {
 	}
 
 	@Test
-	void testAddDiseaseToVirus() {
+	public void testAddDiseaseToVirus() {
 		Disease disease = new Disease("Agil-19");
 		Virus virus = new Virus(0,"Sars-Agil-19");
 		virus.addDisease(disease);
@@ -75,7 +75,7 @@ class VirusTestCases {
 		assert(test);
 	}
 	@Test
-	void testAddDiseaseToVirusV2() {
+	public void testAddDiseaseToVirusV2() {
 		Disease disease = new Disease("Agil-19");
 		Virus virus = new Virus(0,"Sars-Agil-19");
 		virus.addDisease(disease);
@@ -89,7 +89,7 @@ class VirusTestCases {
 		assert(test);
 	}
 	@Test
-	void testAddDiseaseTo2Virus() {
+	public void testAddDiseaseTo2Virus() {
 		Disease disease = new Disease("Agil-19");
 		Virus virus = new Virus(0,"Sars-Agil-19");
 		virus.addDisease(disease);
@@ -99,6 +99,7 @@ class VirusTestCases {
 		
 		for(Disease m : virus.getDiseases()) {
 			if (m.getName().equals("Agil-19")) {
+				System.out.println(" found ");
 				test=true;
 			}
 		}
@@ -106,7 +107,7 @@ class VirusTestCases {
 	}
 	
 	@Test(expected = VirusIsAlreadySet.class)
-	void testAddDiseaseTo2VirusV2() throws VirusIsAlreadySet {
+	public void testAddDiseaseTo2VirusV2() throws VirusIsAlreadySet {
 		Disease disease = new Disease("Agil-19");
 		Virus virus = new Virus(4,"Sars-Agil-19");
 		virus.addDisease(disease);

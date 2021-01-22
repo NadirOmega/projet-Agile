@@ -25,9 +25,8 @@ public class SuperEvil extends VirusToAvengerAdapter{
 	 * @return SuperEvil instance
 	 */
 	public static synchronized SuperEvil getInstance(Virus virus) {
-		if (virus.getKidness()!=-1) {
-			System.out.println("Ce virus n'est pas assez puissante pour "
-					+ "devenir Thanos !");
+		if (virus.getKidness()!=-1&&virus.getName().equals("")) {
+			//Ce virus n'est pas assez puissante pour devenir Thanos !
 			return null;
 		}
 		else if (instance==null) {
