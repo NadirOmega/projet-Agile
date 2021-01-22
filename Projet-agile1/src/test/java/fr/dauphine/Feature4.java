@@ -1,7 +1,6 @@
 package fr.dauphine;
 
 import static org.junit.Assert.assertEquals;
-
 import cucumber.api.PendingException;
 import cucumber.api.java.bs.A;
 import cucumber.api.java.en.Given;

@@ -25,13 +25,15 @@ public FusionAvenger(String name,Avenger...avengers ) {
 public int getPower() {
 	int sum=0;
 	for(Avenger avenger : listeAvenger) {
+		/*
 		if (avenger instanceof FusionAvenger) {
 			//to delete 
 			sum=sum+avenger.getPower();
 		}
 		else {
 			sum=sum+avenger.getPower();
-		}
+		}*/
+		sum=sum+avenger.getPower();
 	}
 	return sum;
 }

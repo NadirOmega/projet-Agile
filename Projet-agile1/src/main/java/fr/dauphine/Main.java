@@ -19,8 +19,6 @@ public class Main {
 		SuperEvil thanos = SuperEvil.getInstance(virus);
 		System.out.println("print "+fusion.getPower());
 		System.out.println("print "+thanos.getPower());
-		Avenger fusion2 = new FusionAvenger("Fusion", fusion,fusion);
-		System.out.println(fusion2.getPower());
 	}
 
 }
