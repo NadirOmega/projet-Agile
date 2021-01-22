@@ -5,11 +5,17 @@ import java.util.ArrayList;
 
 import fr.dauphine.exception.VirusIsAlreadySet;
 
+/**
+ * Class describing virus model
+ * @author Nad & Manil
+ *
+ */
 public class Virus {
-	//valeur max = 100
+	// min = 0; max = 100
+	//the smaller the value, the more powerful the virus
 	private int kindnesse;
+	
 	private String name ;
-	//Ajout de maladies 
 	private ArrayList<Disease> diseases ;
 
 	public Virus(int gentillesse, String nom) {
@@ -23,84 +29,86 @@ public class Virus {
 		this.name = "Unknown_virus";
 		this.diseases= new ArrayList<Disease>();
 	}
-	
-	
-	public boolean addMaladieV2(Disease maladie) throws VirusIsAlreadySet  {
-
-		if (!maladie.isFree()) {
-			Virus victime = maladie.getVirus();
-			if (!this.compareTo(victime))
-			{
-					this.setGentillesse(this.kindnesse-1);
-					throw new VirusIsAlreadySet();
-			}
-			else {
-				maladie.beIndependant();
-				diseases.add(maladie);
-				maladie.setVirus(this);
-				this.setGentillesse(this.kindnesse+1);
-				return true;
-			}
-		}
-		else
-			this.addMaladie(maladie);
-		
-		return true;
-	}
-
-	public ArrayList<Disease> getMaladies() {
-		return diseases;
-	}
-	public void setMaladies(ArrayList<Disease> maladies) {
-		this.diseases = maladies;
-	}
-
-	//constructeur sans paramétres 
-
-
-
-
-	public int getGentillesse() {
-		return kindnesse;
-	}
-	public void setGentillesse(int gentillesse) {
-		this.kindnesse = gentillesse;
-	}
-	public String getNom() {
-		return name;
-	}
-	public void setNom(String nom) {
-		this.name = nom;
-	}
-
-
 	public String mutation(int x ) {
 		this.kindnesse+=x;
 		return "this.nom"+" "+ this.kindnesse;
 	}
 
 
-	public void addMaladie(Disease maladie)  {
+	public void addDisease(Disease disease)  {
 
-		if (maladie.getVirus()!=null) {
+		if (disease.getVirus()!=null) {
 			//O Voleur , o voleur !
-			Virus victime= maladie.getVirus();
-			victime.getMaladies().remove(maladie);
+			Virus victime= disease.getVirus();
+			victime.getDiseases().remove(disease);
 		}
-		diseases.add(maladie);
-		maladie.setVirus(this);
+		diseases.add(disease);
+		disease.setVirus(this);
 	}
+	/**
+	 * improved version for the Add, check whether a virus is already set or not 
+	 * @param disease
+	 * @return boolean , succesfull or not
+	 * @throws VirusIsAlreadySet
+	 */
+	public boolean addDiseaseV2(Disease disease) throws VirusIsAlreadySet  {
+
+		if (!disease.isFree()) {
+			Virus victime = disease.getVirus();
+			if (!this.compareTo(victime))
+			{
+				this.setKindness(this.kindnesse-1);
+				throw new VirusIsAlreadySet();
+			}
+			else {
+				disease.beIndependant();
+				diseases.add(disease);
+				disease.setVirus(this);
+				this.setKindness(this.kindnesse+1);
+				return true;
+			}
+		}
+		else
+			this.addDisease(disease);
+
+		return true;
+	}
+
 	/**
 	 * 
 	 * @param virus
-	 * @return 
-	 * 1 si virus actuelle est plus méchant que le virus en paramétre
-	 * 0 si egaux
-	 * -1 si virus en paramétre est plus méchant !			
+	 * @return boolean 
+	 * true :  if a the actual virus is meaner than the virus in param 
+	 * false : other cases
 	 */
 	public boolean compareTo(Virus virus) {
-		return this.getGentillesse()<virus.getGentillesse();
+		return this.getKidness()<virus.getKidness();
 	}
+
+	/* Getter and Setters */ 
+
+	public int getKidness() {
+		return kindnesse;
+	}
+	public void setKindness(int kidness) {
+		this.kindnesse = kidness;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public ArrayList<Disease> getDiseases() {
+		return (ArrayList<Disease>) diseases.clone();
+	}
+	public void setMaladies(ArrayList<Disease> maladies) {
+		this.diseases = maladies;
+	}
+
+
+
 
 
 }

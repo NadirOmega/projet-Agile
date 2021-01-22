@@ -1,13 +1,13 @@
 package fr.dauphine.avengers;
 
-public class SuperPouvoir {
+public class SuperPower {
 String name;
 Avenger avenger;
-public SuperPouvoir(String name) {
+public SuperPower(String name) {
 	super();
 	this.name = name;
 }
-public SuperPouvoir() {
+public SuperPower() {
 
 }
 public String getName() {

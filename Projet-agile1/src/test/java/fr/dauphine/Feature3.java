@@ -6,8 +6,8 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import fr.dauphine.adapter.VirusToAvenger;
-import fr.dauphine.avengers.SuperMechant;
+import fr.dauphine.adapter.VirusToAvengerAdapter;
+import fr.dauphine.avengers.SuperEvil;
 import fr.dauphine.virus.Virus;
 import org.junit.Assert;
 
@@ -21,16 +21,16 @@ public class Feature3 {
     }
 
     @When("Le virus {string} se transforme en supermechant")
-    public SuperMechant virusMechant(String string) {
-        SuperMechant superMechant = SuperMechant.getInstance(creationDunVirus(string));
+    public SuperEvil virusMechant(String string) {
+        SuperEvil superMechant = SuperEvil.getInstance(creationDunVirus(string));
 
         return superMechant;
 
     }
     @Then("Le supermechant {string} est unique")
     public void virusMechantOuPas(String string) {
-        SuperMechant superMechant = virusMechant(string);
-        SuperMechant superMechant2 = SuperMechant.getInstance(new Virus());
+        SuperEvil superMechant = virusMechant(string);
+        SuperEvil superMechant2 = SuperEvil.getInstance(new Virus());
         assertEquals(superMechant2,superMechant);
     }
 

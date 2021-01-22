@@ -22,15 +22,15 @@ public class Disease {
 	}
 
 
-	public String getNom() {
+	public String getName() {
 		return name;
 	}
-	public void setNom(String nom) {
-		this.name = nom;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	public void beIndependant() {
-		this.getVirus().getMaladies().remove(this);
+		this.getVirus().getDiseases().remove(this);
 	}
 	public boolean isFree() {
 		return this.getVirus()==null;

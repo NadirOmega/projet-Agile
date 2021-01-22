@@ -1,13 +1,13 @@
 package fr.dauphine.avengers;
 
-import fr.dauphine.adapter.VirusToAvenger;
+import fr.dauphine.adapter.VirusToAvengerAdapter;
 import fr.dauphine.virus.Virus;
 
-public class SuperMechant extends VirusToAvenger{
+public class SuperEvil extends VirusToAvengerAdapter{
 
-	private static SuperMechant instance;
+	private static SuperEvil instance;
 
-	private SuperMechant(Virus virus) {
+	private SuperEvil(Virus virus) {
 		super(virus);
 		this.power=400;
 		this.name="Thanos";
@@ -19,14 +19,19 @@ public class SuperMechant extends VirusToAvenger{
 	public void setName(String s){
 
 	}
-	public static SuperMechant getInstance(Virus virus) {
-		if (virus.getGentillesse()!=-1) {
+	/**
+	 * Thread Safe singelton
+	 * @param virus
+	 * @return SuperEvil instance
+	 */
+	public static synchronized SuperEvil getInstance(Virus virus) {
+		if (virus.getKidness()!=-1) {
 			System.out.println("Ce virus n'est pas assez puissante pour "
 					+ "devenir Thanos !");
 			return null;
 		}
 		else if (instance==null) {
-			instance = new SuperMechant(virus);
+			instance = new SuperEvil(virus);
 			return instance;
 		}
 		else return instance;
@@ -38,7 +43,7 @@ public class SuperMechant extends VirusToAvenger{
 
 
 
-
+	@Override
 	public int getPower() {
 		return this.power;
 	}

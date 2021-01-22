@@ -5,8 +5,14 @@ import java.util.List;
 
 public class FusionAvenger extends Avenger{
 
-private List<Avenger> listeAvenger;
 
+
+private List<Avenger> listeAvenger;
+/**
+ * Class model for fusionAvenger
+ * @param name
+ * @param avengers
+ */
 public FusionAvenger(String name,Avenger...avengers ) {
 	this.name=name;
 	listeAvenger = new ArrayList<Avenger>();
@@ -15,6 +21,7 @@ public FusionAvenger(String name,Avenger...avengers ) {
 	}
 }
 
+@Override
 public int getPower() {
 	int sum=0;
 	for(Avenger avenger : listeAvenger) {
@@ -29,8 +36,8 @@ public int getPower() {
 	return sum;
 }
 
-	public ArrayList<SuperPouvoir> getAllSuperPowerFusion() {
-		ArrayList<SuperPouvoir> allTheSuperPower = new ArrayList<SuperPouvoir>();
+	public List<SuperPower> getAllSuperPowerFusion() {
+		ArrayList<SuperPower> allTheSuperPower = new ArrayList<SuperPower>();
 		for(int i = 0 ; i < listeAvenger.size(); i++) {
 			for(int j= 0; j<listeAvenger.get(i).getAllSuperPower().size();j++){
 				allTheSuperPower.add(listeAvenger.get(i).getAllSuperPower().get(j));

@@ -7,10 +7,10 @@ import cucumber.api.java.bs.A;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import fr.dauphine.adapter.VirusToAvenger;
+import fr.dauphine.adapter.VirusToAvengerAdapter;
 import fr.dauphine.avengers.Avenger;
 import fr.dauphine.avengers.FusionAvenger;
-import fr.dauphine.avengers.SuperMechant;
+import fr.dauphine.avengers.SuperEvil;
 import fr.dauphine.virus.Virus;
 import org.junit.Assert;
 
